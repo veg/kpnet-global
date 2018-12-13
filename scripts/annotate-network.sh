@@ -7,7 +7,7 @@ python3 scripts/inject-attributes.py -n network-annotated-temp.json  -t data/kp-
 #import isolate years for LANL data from data/lanl-annotations.tsv
 python3 scripts/inject-attributes.py -n  network-annotated-temp2.json -t data/lanl-annotations.tsv  -f "IsolateYear" "Year" "Number" 'x: None if x == "-" else int (x)' -o network-annotated-temp.json
 #import country for LANL data from data/lanl-annotations.tsv; set country to 'US' by default for KP data
-python3 scripts/inject-attributes.py -n  network-annotated-temp.json -t data/lanl-annotations.tsv  -f "Country" "Country" "String" 'x: None if x == "-" else x' -x "Country" "US"  -o network-annotated-temp2.json
+python3 scripts/inject-attributes.py -n  network-annotated-temp.json -t data/lanl-annotations.tsv  -f "Country" "Country" "String" 'x: "missing" if x == "-" else x' -x "Country" "US"  -o network-annotated-temp2.json
 #import subtype for LANL data from data/lanl-annotations.tsv
 python3 scripts/inject-attributes.py -n  network-annotated-temp2.json -t data/lanl-annotations.tsv  -f "Subtype" "Subtype" "String" 'x: None if x == "-" else x' -o network-annotated-temp.json
 #store the KP attribute for KP sequences and LANL for other sequences
